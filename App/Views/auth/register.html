@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Đăng nhập{% endblock %}
+
+{% block head %}
+{{ parent()}}
+{% endblock %}
+
+{% block navbar %}
+{{ parent()}}
+{% endblock %}
+
+{% block login %}<a class="btn btn-primary" href="/login">Login</a>{% endblock %}
+
+{% block content %}
+<div class="row d-flex justify-content-center mt-5">
+    <div class="col-6">
+        <form action="/register" method="POST">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" name="password" class="form-control" id="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="repeatPassword" class="form-label">Nhập lại mật khẩu</label>
+                <input type="password" name="repeatPassword" class="form-control" id="repeatPassword" required>
+            </div>
+            {% if error is defined %}
+            <div class="mb-3">
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+            </div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

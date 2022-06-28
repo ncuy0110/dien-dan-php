@@ -1,0 +1,22 @@
+{
+    "name": "chicken/demo",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Uy",
+            "email": "nguyenchonuy2001@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.2",
+        "twig/twig": "~2.0",
+        "nochso/html-compress-twig": "^2.0",
+        "vlucas/phpdotenv": "^5.4",
+        "bramus/router": "^1.6"
+    }
+}
