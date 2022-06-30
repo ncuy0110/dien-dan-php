@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Bài đăng{% endblock %}
+
+{% block content %}
+<div class="row d-flex justify-content-center mt-5">
+    <div class="col-9">
+        {% for post in posts%}
+        <div class="row mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-user"></i>{{post.email|u.truncate(8, '***')}} - {{ post.created_at }}
+                </div>
+                <div class="card-body mb-0">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{post.content | raw}}</p>
+                    <hr>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12" id="commentHeader{{post.id}}">
+                                <b>Bình luận</b>
+                                <button id="btnShowAll{{post.id}}" onclick="showAll({{post.id}})"
+                                    style="background: none; border: none;"> <i class="far fa-eye"></i></button>
+                                <button id="btnHideAll{{post.id}}" onclick="hideAll({{post.id}})"
+                                    style="background: none; border: none; display: none;" > <i class="fas fa-eye-slash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="listComment{{post.id}}" class="container-fluid"> </div>
+                    <div class="w-90">
+                        <textarea class="form-control w-100 mb-3" name="comment" id="comment{{post.id}}" cols="10"
+                            rows="3"></textarea>
+                        <button type="button" onclick="postComment({{post.id}})" class="btn btn-primary mb-3">Bình
+                            luận</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        const postComment = (id) => {
+            let comment = $('#comment'.concat(id));
+            let listComment = $('#listComment'.concat(id));
+            const data = {
+                content: comment.val(),
+                postId: id
+            };
+            $.ajax({
+                url: "comment",
+                method: "POST",
+                data: {
+                    data: data
+                },
+                dataType: 'json',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            }).done((res) => {
+                console.log(res);
+                const cmt = res.comment;
+                if (res.message)
+                    listComment.append(`
+                        <div class="row">
+                            <div class="col-6">
+                                <b>${cmt.email.substring(0, 5)}***</b> <span style="margin-left: 10px">  ${cmt.content}</span>
+                            </div>
+                            <div class="col-6">${cmt.created_at}</div>
+                        </div>
+                    `);
+                comment.val("");
+            }).fail((err) => {
+                console.log(err);
+            });
+        }
+
+
+        const showAll = (id) => {
+            const url = `comment/${id}`;
+            $.ajax({
+                url: url,
+                method: "GET",
+                dataType: 'json',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            }).done((res) => {
+                res.map(cmt => {
+                    let listComment = $('#listComment'.concat(id));
+                    listComment.append(`
+                        <div class="row">
+                            <div class="col-6">
+                                <b>${cmt.email.substring(0, 5)}***</b> <span style="margin-left: 10px">  ${cmt.content}</span>
+                            </div>
+                            <div class="col-6">${cmt.created_at}</div>
+                        </div>
+                    `);
+                });
+                $('#btnShowAll'.concat(id)).hide();
+                $('#btnHideAll'.concat(id)).show();
+            }).fail((err) => console.log(err));
+        }
+
+        const hideAll = (id) => {
+            $('#listComment'.concat(id)).empty();
+            $('#btnHideAll'.concat(id)).hide();
+            $('#btnShowAll'.concat(id)).show();
+        }
+    </script>
+
+</div>
+</div>
+{% endblock %}

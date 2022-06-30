@@ -49,7 +49,7 @@ class __TwigTemplate_8b6dc869993e36da32ccaf9f2a681230 extends \Twig\Template
     ";
         // line 6
         $this->displayBlock('head', $context, $blocks);
-        // line 18
+        // line 17
         echo "</head>
 
 <body>
@@ -58,16 +58,16 @@ class __TwigTemplate_8b6dc869993e36da32ccaf9f2a681230 extends \Twig\Template
             <div class=\"col-9\">
                 <div class=\"row\" id=\"navbar\">
                     ";
-        // line 25
+        // line 24
         $this->displayBlock('navbar', $context, $blocks);
-        // line 48
+        // line 51
         echo "                </div>
                 <div class=\"row\" id=\"content\">";
-        // line 49
+        // line 52
         $this->displayBlock('content', $context, $blocks);
         echo " </div>
                 <div class=\"row\" id=\"footer\">";
-        // line 50
+        // line 53
         $this->displayBlock('name', $context, $blocks);
         echo "</div>
             </div>
@@ -94,12 +94,11 @@ class __TwigTemplate_8b6dc869993e36da32ccaf9f2a681230 extends \Twig\Template
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css\" rel=\"stylesheet\"
         integrity=\"sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor\" crossorigin=\"anonymous\">
-    <link rel=\"stylesheet\"
-        href=\"https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css\"
-        integrity=\"sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM\" crossorigin=\"anonymous\">
+    <script src=\"https://kit.fontawesome.com/a076d05399.js\" crossorigin=\"anonymous\"></script>
+
 
     <title>";
-        // line 16
+        // line 15
         $this->displayBlock('title', $context, $blocks);
         echo " - Diễn đàn</title>
     ";
@@ -111,14 +110,14 @@ class __TwigTemplate_8b6dc869993e36da32ccaf9f2a681230 extends \Twig\Template
         echo " ";
     }
 
-    // line 25
+    // line 24
     public function block_navbar($context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 26
+        // line 25
         echo "                    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
                         <div class=\"container-fluid\">
-                            <a class=\"navbar-brand\" href=\"#\">Diễn Đàn</a>
+                            <a class=\"navbar-brand\" href=\"/\">Diễn Đàn</a>
                             <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\"
                                 data-bs-target=\"#navbarText\" aria-controls=\"navbarText\" aria-expanded=\"false\"
                                 aria-label=\"Toggle navigation\">
@@ -130,33 +129,44 @@ class __TwigTemplate_8b6dc869993e36da32ccaf9f2a681230 extends \Twig\Template
                                         <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">Trang chủ</a>
                                     </li>
                                     <li class=\"nav-item\">
-                                        <a class=\"nav-link\" href=\"#\">Bài viết</a>
+                                        <a class=\"nav-link\" href=\"/post\">Bài viết</a>
                                     </li>
                                 </ul>
                                 ";
-        // line 43
+        // line 42
         $this->displayBlock('login', $context, $blocks);
-        // line 44
+        // line 47
         echo "                            </div>
                         </div>
                     </nav>
                     ";
     }
 
-    // line 43
+    // line 42
     public function block_login($context, array $blocks = [])
     {
         $macros = $this->macros;
+        // line 43
+        echo "                                ";
+        if ((twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "loggedIn", [], "any", false, false, false, 43) == true)) {
+            // line 44
+            echo "                                ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "email", [], "any", false, false, false, 44), "html", null, true);
+            echo "
+                                ";
+        }
+        // line 46
+        echo "                                ";
     }
 
-    // line 49
+    // line 52
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
         echo " ";
     }
 
-    // line 50
+    // line 53
     public function block_name($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -175,7 +185,7 @@ class __TwigTemplate_8b6dc869993e36da32ccaf9f2a681230 extends \Twig\Template
 
     public function getDebugInfo()
     {
-        return array (  160 => 50,  153 => 49,  147 => 43,  140 => 44,  138 => 43,  119 => 26,  115 => 25,  103 => 16,  92 => 7,  88 => 6,  71 => 50,  67 => 49,  64 => 48,  62 => 25,  53 => 18,  51 => 6,  45 => 2,  43 => 1,);
+        return array (  170 => 53,  163 => 52,  159 => 46,  153 => 44,  150 => 43,  146 => 42,  139 => 47,  137 => 42,  118 => 25,  114 => 24,  102 => 15,  92 => 7,  88 => 6,  71 => 53,  67 => 52,  64 => 51,  62 => 24,  53 => 17,  51 => 6,  45 => 2,  43 => 1,);
     }
 
     public function getSourceContext()

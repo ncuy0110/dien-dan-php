@@ -1,18 +1,27 @@
 <?php
-
-namespace models;
-
 class Post
 {
     public $id;
     public $title;
     public $content;
+    public $userId;
+    public $createdAt;
+    public $updatedAt;
 
-    function __construct($id, $title, $content)
-    {
+    function __construct(
+        $id = null,
+        $title = null,
+        $content = null,
+        $userId = null,
+        $createdAt = null,
+        $updatedAt = null
+    ) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
+        $this->userId = $userId;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
     }
 
     static function all()

@@ -2,6 +2,8 @@
 require_once 'Core/View.php';
 require_once 'App/Models/user.php';
 require_once 'App/Repositories/UserRepository.php';
+
+session_start();
 class AuthController {
     public static function getLoginPage() {
         View::renderTemplate('/auth/login.html');
@@ -46,7 +48,7 @@ class AuthController {
         }
 
         if (UserRepository::register($email, $password))
-            return View::renderTemplate('/auth/login.html');
+            header('Location: /login');
         else {
             return View::renderTemplate('/auth/register.html', [
                 'error' => 'Đăng ký không thành công!'

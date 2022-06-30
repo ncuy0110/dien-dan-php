@@ -87,30 +87,35 @@ class __TwigTemplate_1534c3db92c2b70629264d20d6f821b8 extends \Twig\Template
         // line 15
         echo "<div class=\"row d-flex justify-content-center mt-5\">
   <div class=\"col-6\">
+    <div class=\"row d-flex justify-content-center\">
+      <div class=\"col-6 text text-center\">
+        <h3>Đăng nhập</h3>
+      </div>
+    </div>
     <form action=\"/login\" method=\"POST\">
       <div class=\"mb-3\">
-        <label for=\"exampleInputEmail1\" class=\"form-label\">Email address</label>
-        <input type=\"email\" name=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\">
+        <label for=\"email\" class=\"form-label\">Email</label>
+        <input type=\"email\" name=\"email\" class=\"form-control\" id=\"email\" aria-describedby=\"emailHelp\">
       </div>
       <div class=\"mb-3\">
-        <label for=\"exampleInputPassword1\" class=\"form-label\">Password</label>
-        <input type=\"password\" name=\"password\" class=\"form-control\" id=\"exampleInputPassword1\">
+        <label for=\"password\" class=\"form-label\">Mật khẩu</label>
+        <input type=\"password\" name=\"password\" class=\"form-control\" id=\"password\">
       </div>
       ";
-        // line 26
+        // line 31
         if (array_key_exists("error", $context)) {
-            // line 27
+            // line 32
             echo "        <div class=\"mb-3\">
           <div class=\"alert alert-danger\" role=\"alert\">
             ";
-            // line 29
+            // line 34
             echo twig_escape_filter($this->env, ($context["error"] ?? null), "html", null, true);
             echo "
           </div>
         </div>
       ";
         }
-        // line 33
+        // line 38
         echo "      <button type=\"submit\" class=\"btn btn-primary\">Submit</button>
     </form>
   </div>
@@ -130,7 +135,7 @@ class __TwigTemplate_1534c3db92c2b70629264d20d6f821b8 extends \Twig\Template
 
     public function getDebugInfo()
     {
-        return array (  114 => 33,  107 => 29,  103 => 27,  101 => 26,  88 => 15,  84 => 14,  77 => 12,  71 => 9,  67 => 8,  61 => 5,  57 => 4,  50 => 2,  39 => 1,);
+        return array (  119 => 38,  112 => 34,  108 => 32,  106 => 31,  88 => 15,  84 => 14,  77 => 12,  71 => 9,  67 => 8,  61 => 5,  57 => 4,  50 => 2,  39 => 1,);
     }
 
     public function getSourceContext()

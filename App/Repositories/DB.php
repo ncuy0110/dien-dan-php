@@ -19,4 +19,8 @@ abstract class DB
         }
         return self::$instance;
     }
+
+    public static function prepare($query) {
+        return self::getInstance()->prepare($query);
+    }
 }

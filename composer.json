@@ -14,9 +14,12 @@
     ],
     "require": {
         "firebase/php-jwt": "^6.2",
-        "twig/twig": "~2.0",
+        "twig/twig": "~2.15",
         "nochso/html-compress-twig": "^2.0",
         "vlucas/phpdotenv": "^5.4",
-        "bramus/router": "^1.6"
+        "bramus/router": "^1.6",
+        "twig/string-extra": "^3.4",
+        "twig/extra-bundle": "^3.4",
+        "symfony/string": "^5.4"
     }
 }

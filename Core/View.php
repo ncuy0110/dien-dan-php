@@ -1,4 +1,5 @@
 <?php
+use Twig\Extra\String\StringExtension;
 
 /**
  * View
@@ -47,8 +48,10 @@ class View
                 'cache' => "cache",
                 'auto_reload' => true
             ));
+            $twig->addGlobal('session', $_SESSION);
             // Enable compression - Very Useful
             $twig->addExtension(new \nochso\HtmlCompressTwig\Extension());
+            $twig->addExtension(new StringExtension());
         }
 
         echo $twig->render($template, $args);

@@ -28,7 +28,11 @@ class UserRepository extends DB{
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $user = $stmt->fetch();
-        return $user;
+        if ($user)
+            $rs = new User($user[0], $user[1], $user[2]);
+        else
+            return null;
+        return $rs;
     }
 
     public static function login($email, $password)
@@ -36,6 +40,6 @@ class UserRepository extends DB{
         $user = self::findByEmail($email);
         if (!$user) 
             return false;
-        return $user[2]== hash('sha256', (string)$password);
+        return $user->password == hash('sha256', (string)$password);
     }
 }
