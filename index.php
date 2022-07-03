@@ -10,38 +10,31 @@ $router = new \Bramus\Router\Router();
 $router->get('/', function() { PostController::getAll(); });
 
 // login
-$router->get('/login', function() { AuthController::getLoginPage(); });
-$router->post('/login', function() { AuthController::login(); });
+$router->get('/login', 'AuthController@getLoginPage');
+$router->post('/login', 'AuthController@login');
+
+//logout
+$router->get('/logout', 'AuthController@logout');
 
 // register
-$router->get('/register', function() { AuthController::getRegisterPage(); });
-$router->post('/register', function() { AuthController::register(); });
+$router->get('/register', 'AuthController@getRegisterPage');
+$router->post('/register', 'AuthController@register');
 
 
 //post
 $router->mount('/post', function() use($router){
-    $router->get('/create', function() { 
-        PostController::getCreatePage(); 
-    });
+    $router->get('/create', 'PostController@getCreatePage');
 
-    $router->get('/', function() {
-        PostController::getAll();
-    });
+    $router->get('/', 'PostController@getAll');
 
-    $router->post('/', function() {
-        PostController::createPost();
-    });
+    $router->post('/', 'PostController@createPost');
 });
 
 //comment
 $router->mount('/comment', function() use($router) {
-    $router->post('/', function() {
-        CommentController::createComment();
-    });
+    $router->post('/', 'CommentController@createComment');
 
-    $router->get('/(\d+)', function($postId) {
-        CommentController::getAll($postId);
-    });
+    $router->get('/(\d+)', 'CommentController@getAll');
 });
 
 $router->set404('/api(/.*)?', function() {

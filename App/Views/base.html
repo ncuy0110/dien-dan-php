@@ -46,6 +46,9 @@
                                 <b id="user">
                                 {{ session.email }}
                                 </b>
+                                <form action="/logout" method="get">
+                                    <button type="submit" class="btn btn-primary">Logout</button>
+                                </form>
                                 {% endif %}
                                 {% endblock %}
                             </div>

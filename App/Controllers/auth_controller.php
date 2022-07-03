@@ -47,12 +47,19 @@ class AuthController {
             ]);
         }
 
-        if (UserRepository::register($email, $password))
-            header('Location: /login');
+        if (UserRepository::register($email, $password)) {
+            header('Location: /login?sign_up=success');
+        }
         else {
             return View::renderTemplate('/auth/register.html', [
                 'error' => 'Đăng ký không thành công!'
             ]);
         }
+    }
+
+    public static function logout() {
+        $_SESSION['loggedIn'] = false;
+        $_SESSION['email'] = null;
+        header('Location: /login');
     }
 }
